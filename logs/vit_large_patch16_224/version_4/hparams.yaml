@@ -1,0 +1,10 @@
+model: vit_large_patch16_224
+num_classes: 10
+pretrained: true
+output_dir: /media/data1/sangjunchung/dacon/object_classification/checkpoint/vit_large_patch16_224/fold0
+early_stopping: 20
+data_path: /media/data1/sangjunchung/dacon/object_classification
+batch_size: 16
+n_splits: 10
+k: 0
+seed: 0

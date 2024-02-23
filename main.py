@@ -46,7 +46,6 @@ def main(args):
         logger=logger,
         log_every_n_steps = 30,
     )
-    
     os.makedirs(args.output_dir, exist_ok=True)    
     model = Model(model=args.model, num_classes=args.num_classes, pretrained=args.pretrained, output_dir = args.output_dir, early_stopping=args.early_stopping)                    
     datamodule = DataModule(data_path = args.data_path, batch_size=args.batch_size)    

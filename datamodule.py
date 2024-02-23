@@ -24,8 +24,8 @@ class DataModule(L.LightningDataModule):
         self.save_hyperparameters()
     
     def setup(self, stage=None):
-        label_encoder = utils.label_encoder(self.data_path + '/train')
-        img_paths, train_labels = utils.load_img_paths(self.data_path + '/train')
+        label_encoder = utils.label_encoder(self.hparams.data_path + '/train')
+        img_paths, train_labels = utils.load_img_paths(self.hparams.data_path + '/train')
     
         img_paths = np.array(img_paths)
         train_labels = np.array([label_encoder[i] for i in train_labels])
