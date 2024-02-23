@@ -1,0 +1,10 @@
+model: resnet50
+num_classes: 10
+pretrained: false
+output_dir: /media/data1/sangjunchung/dacon/object_classification/checkpoint/resnet50/fold0
+early_stopping: 20
+data_path: /media/data1/sangjunchung/dacon/object_classification
+batch_size: 16
+n_splits: 5
+k: 0
+seed: 0
