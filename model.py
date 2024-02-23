@@ -14,11 +14,12 @@ import numpy as np
 
 
 class Model(L.LightningModule):
-    def __init__(self, model, num_classes, pretrained, output_dir):
+    def __init__(self, model, num_classes, pretrained, output_dir, early_stopping = 10):
         super().__init__()
         self.save_hyperparameters()
         self.model = create_model(model, num_classes=num_classes, pretrained=pretrained)
         self.output_dir = output_dir
+        self.early_stopping = early_stopping
         self.epoch_train_loss = 0.0
         self.val_loss = []
         self.correct, self.total = 0, 0
@@ -82,5 +83,5 @@ class Model(L.LightningModule):
         	dirpath= self.output_dir,
             filename="{epoch:02d}_{acc:2f}"
         )
-        early_cb = EarlyStopping(monitor='val_loss', mode='min', patience=10)
+        early_cb = EarlyStopping(monitor='val_loss', mode='min', patience=self.early_stopping)
         return [tqdm_cb, ckpt_cb, early_cb]
